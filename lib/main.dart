@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'widgets/XQDLForm.dart';
+import 'package:xqdl_app/routes/add_server.dart';
+import 'package:xqdl_app/widgets/server/xqdl_list.dart';
 
-void main() => runApp(const XQDLHome());
+void main() => runApp(const MaterialApp(home: XQDLHome()));
 
 class XQDLHome extends StatelessWidget {
   const XQDLHome({super.key});
@@ -18,9 +19,29 @@ class XQDLHome extends StatelessWidget {
           title: const AppTitle(),
           backgroundColor: Colors.black,
         ),
-        body: const Center(
-            child: XQDLForm(),
-      ),
+        body: SingleChildScrollView(
+          child: Column(children: [
+            const Center(child: XQDLList()),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const AddServer()),
+                );
+              },
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.zero,
+                  ),
+                ),
+              ),
+              child: const Text('Add a new server',
+                  style: TextStyle(color: Colors.white)),
+            ),
+          ]),
+        ),
       ),
     );
   }
@@ -40,20 +61,22 @@ class AppTitleState extends State<AppTitle> {
   @override
   Widget build(BuildContext context) {
     switch (titleIndex) {
-        case 1:
+      case 1:
         titleIndex -= 1;
-          return GestureDetector(
-            child: const Text('XQDL - says "ex-quidel"', style: TextStyle(color: Colors.white)),
-            onTap: () {
-              setState(() {
-                isClicked = true;
-              });
-            },
-          );
+        return GestureDetector(
+          child: const Text('XQDL - says "ex-quidel"',
+              style: TextStyle(color: Colors.white)),
+          onTap: () {
+            setState(() {
+              isClicked = true;
+            });
+          },
+        );
       default:
         titleIndex += 1;
         return GestureDetector(
-          child: const Text('XQDL - Remote Control', style: TextStyle(color: Colors.white)),
+          child: const Text('XQDL - Remote Control',
+              style: TextStyle(color: Colors.white)),
           onTap: () {
             setState(() {
               isClicked = true;
@@ -61,6 +84,5 @@ class AppTitleState extends State<AppTitle> {
           },
         );
     }
-    }
+  }
 }
-
