@@ -1,4 +1,5 @@
-# [in Development] XQDL Remote (says "ex-quidel")
+### _[In Development - Not Ready]_
+# XQDL Remote (says "ex-quidel")
 
 ## A remote control for your computer!
 
