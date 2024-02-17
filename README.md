@@ -1,4 +1,4 @@
-# XQDL Remote
+# XQDL Remote (says "ex-quidel")
 
 ## A remote control for your computer!
 
